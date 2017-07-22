@@ -1,1 +1,1 @@
-hardy_django_blog
+# hardy_django_blog
