@@ -1,9 +1,9 @@
 """定义hardy_blogs的URL模式"""
 
 from django.conf.urls import url
-from . import views
+from .views import ArticleListView
 
 urlpatterns = [
     # 主页
-    url(r'^$', views.blog_index, name='blog_index'),
+    url(r'^$', ArticleListView.as_view(), name='blog_index'),
 ]
