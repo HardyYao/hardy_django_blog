@@ -13,7 +13,7 @@
         </div>
         <div class="summary">
           {% autoescape off %}
-          <a href="{% url 'article_detail' o.title %}">{{ o.content_html|truncatechars_html:100 }}</a>
+          <a href="{% url 'hardy_blogs:article_detail' o.title %}">{{ o.content_html|truncatechars_html:100 }}</a>
           {% endautoescape %}
         </div>
       </div>
