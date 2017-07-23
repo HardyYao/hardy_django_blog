@@ -1,5 +1,4 @@
 from django.core.urlresolvers import reverse
-from django.contrib.sitemaps import Sitemap
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import F
@@ -16,20 +15,6 @@ class AdminRequiredMixin(object):
     def as_view(cls, **initkwargs):
         view = super(AdminRequiredMixin, cls).as_view(**initkwargs)
         return staff_member_required(view)
-
-
-class BlogSitemap(Sitemap):
-    changefreq = "daily"
-    priority = 0.5
-
-    def items(self):
-        return Article.objects.all()
-
-    def lastmod(self, obj):
-        return obj.updated
-
-    def location(self, obj):
-        return obj.url
 
 class ArticleListView(ListView):
     template_name = 'blog_index.html'
@@ -99,6 +84,5 @@ class ArticleEditView(AdminRequiredMixin, FormView):
 
     def get_success_url(self):
         title = self.request.POST.get('title')
-        # success_url = '/blog/article/%s' % (title)
         success_url = reverse('article_detail', args=(title,))
         return success_url

@@ -9,11 +9,9 @@
 {% block content %}
 <div class="container">
   <div class="publish center-block">
-    <form novalidate action="" method="post">
+    <form novalidate action="{% url 'hardy_blogs:blog_index' %}" method="post">
         {% csrf_token %}
-      {{ form.title }}
-      {{ form.content }}
-      {{ form.tags }}
+        {{ form.as_p }}
       <button type="submit" class="btn btn-primary">发 布</button>
     </form>
   </div>

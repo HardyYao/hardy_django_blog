@@ -1,5 +1,5 @@
 django_env/
 __pycache__/
-migration/
+migrations/
 *.sqlite3
-.idea
+.idea/
